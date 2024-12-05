@@ -1,6 +1,16 @@
+# Dependabot version:
 version: 2
+
+# Define the updates that Dependabot will manage:
 updates:
+
+  # Add Maven dependency manager for Java projects:
   - package-ecosystem: "maven"
+
+    # Manage dependencies from the root of the repository:
     directory: "/"
+    
     schedule:
+    
+      # Run daily updates:
       interval: "daily"
