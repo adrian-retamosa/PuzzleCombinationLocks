@@ -1,13 +1,12 @@
 package adrianretamosa.puzzlecombinationlocksfeature;
 
-// Main feature class:
-
+// Import the Arrays class:
 import java.util.Arrays;
 
+// Import the Scanner class to read user inputs:
+import java.util.Scanner;
+
 public class PuzzleCombinationLocksFeature {
-    
-    // Define a constant ArrayList to hold the symbols used in the combination locks:
-    static String[] SYMBOLS = {"@", "#", "$", "%", "&", "*"};
 
     // Main method:
     public static void main(String[] args) {
@@ -16,8 +15,45 @@ public class PuzzleCombinationLocksFeature {
         System.out.println("Puzzle Combination Lock Feature Initialised!");
         
         // Print the available symbols for the player:
-        System.out.println("Available symbols: " + Arrays.toString(SYMBOLS));
+        System.out.println("Available symbols: " + Arrays.toString(PuzzleGeneration.getSymbols()));
         
-        // Feature will continue here...
+        // Generate a random combination using the PuzzleGenerator class:
+        String[] combination = PuzzleGeneration.generateCombination();
+        
+        // The following line only has debugging purposes:
+        System.out.println("(Debugging: Generated combination is " + Arrays.toString(combination) + ")");
+        
+        // Start a guessing game:
+        System.out.println("Guess the combination by entering 4 symbols separated by spaces.");
+
+        // Open scanner for user input:
+        Scanner scanner = new Scanner(System.in);
+        
+        // Add a boolean flag to track if the puzzle has been solved:
+        boolean solved = false;
+
+        // Loop until the puzzle is solved:
+        while (!solved) {
+            System.out.print("Your guess: ");
+            
+            // Get user input as a single string:
+            String input = scanner.nextLine(); 
+            
+            // Split the input into an array:
+            String[] playerGuess = input.split(" "); 
+            
+            // Validate the guess:
+            solved = PuzzleGeneration.validateCombination(combination, playerGuess);
+
+            // Tell the user if they solved the puzzle or not:
+            if (solved) {
+                System.out.println("Congratulations! You solved the puzzle!");
+            } else {
+                System.out.println("Incorrect combination. Try again.");
+            }
+        }
+
+        // When the player solves the puzzle, close the scanner:
+        scanner.close();
     }
 }
