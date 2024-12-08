@@ -7,8 +7,8 @@ updates:
   # Add Maven dependency manager for Java projects:
   - package-ecosystem: "maven"
 
-    # Manage dependencies from the root of the repository:
-    directory: "/"
+    # Manage dependencies from the project directory:
+    directory: "/PuzzleCombinationLocksFeature/"
     
     schedule:
     
