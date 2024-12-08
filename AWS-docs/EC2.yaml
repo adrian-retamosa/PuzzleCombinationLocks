@@ -1,0 +1,10 @@
+Resources:
+  MyInstances:
+    Type: AWS::EC2::Instance
+    Properties:
+      #AvailabilityZone: eu-west-1b
+      ImageId: ami-02141377eee7defb9
+      InstanceType: t2.micro
+      Tags:
+        - Key: devops
+          Value: DevOps-2024
