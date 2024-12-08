@@ -24,7 +24,9 @@ public class PuzzleCombinationLocksFeature {
         System.out.println("(Debugging: Generated combination is " + Arrays.toString(combination) + ")");
         
         // Start a guessing game:
-        System.out.println("Guess the combination by entering 4 symbols separated by spaces.");
+        int lives = 5; 
+        System.out.println("Guess the combination by entering 4 symbols separated by spaces");
+        System.out.println("You have " + lives + " lives left");
 
         // Open scanner for user input:
         Scanner scanner = new Scanner(System.in);
@@ -32,8 +34,8 @@ public class PuzzleCombinationLocksFeature {
         // Add a boolean flag to track if the puzzle has been solved:
         boolean solved = false;
 
-        // Loop until the puzzle is solved:
-        while (!solved) {
+        // Loop while there are lives left and the puzzle is not solved:
+        while (!solved && lives > 0) {
             System.out.print("Your guess: ");
             
             // Get user input as a single string:
@@ -49,11 +51,23 @@ public class PuzzleCombinationLocksFeature {
             if (solved) {
                 System.out.println("Congratulations! You solved the puzzle!");
             } else {
-                System.out.println("Incorrect combination. Try again.");
+                
+                // Take one life:
+                lives--;
+                
+                // If the user still has lives:
+                if (lives > 0) {
+                    System.out.println("Incorrect combination. You have " + lives + " lives left. Try again.");
+                } 
+                
+                // If the user ran out of lives:
+                else {
+                    System.out.println("You have no lives left. Game over!");
+                }
             }
         }
 
-        // When the player solves the puzzle, close the scanner:
+        // Close the scanner at the very end:
         scanner.close();
     }
 }
