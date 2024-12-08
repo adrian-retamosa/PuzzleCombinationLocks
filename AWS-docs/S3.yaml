@@ -1,0 +1,9 @@
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+    AccessControl: PublicRead
+    BucketName: "devops-stack"
+    Tags:
+      - Key: dev
+        Value: ops
